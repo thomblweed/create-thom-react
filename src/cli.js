@@ -1,13 +1,13 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
 
+import { createProject } from './main';
+
 const parseArgsIntoOptions = (rawArgs) => {
   const args = arg(
     {
-      '--git': Boolean,
       '--yes': Boolean,
       '--install': Boolean,
-      '-g': '--git',
       '-y': '--yes',
       '-i': '--install'
     },
@@ -62,5 +62,5 @@ const promptForMissingOptions = async (options) => {
 export const cli = async (args) => {
   let options = parseArgsIntoOptions(args);
   options = await promptForMissingOptions(options);
-  console.log('options', options);
+  await createProject(options);
 };

@@ -2,7 +2,7 @@
   "name": "@thomblweed/create-thom-react",
   "version": "1.0.0",
   "description": "cli to create my preferred react project setup",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "bin": {
     "@thomblweed/create-thom-react": "bin/create-thom-react",
     "create-thom-react": "bin/create-thom-react"
@@ -10,19 +10,18 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "react",
     "cli",
     "create-thom-react"
   ],
-  "author": "Thomas Newman",
+  "author": "thom",
   "license": "ISC",
   "dependencies": {
-    "arg": "^5.0.1",
-    "esm": "^3.2.25",
-    "inquirer": "^8.2.0"
+    "arg": "5.0.1",
+    "chalk": "4.1.2",
+    "esm": "3.2.25",
+    "inquirer": "8.2.0",
+    "ncp": "2.0.0"
   }
 }
