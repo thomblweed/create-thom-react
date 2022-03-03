@@ -17,7 +17,6 @@ const parseArgsIntoOptions = (rawArgs) => {
   );
   return {
     skipPrompts: args['--yes'] || false,
-    git: args['--git'] || false,
     template: args._[0],
     runInstall: args['--install'] || false
   };
@@ -42,11 +41,11 @@ const promptForMissingOptions = async (options) => {
       default: defaultTemplate
     });
   }
-  if (!options.git) {
+  if (!options.runInstall) {
     questions.push({
       type: 'confirm',
-      name: 'git',
-      message: 'Would you like to initialize a git repository?',
+      name: 'runInstall',
+      message: 'Would you like to install dependencies?',
       default: false
     });
   }
@@ -55,12 +54,12 @@ const promptForMissingOptions = async (options) => {
   return {
     ...options,
     template: options.template || answers.template,
-    git: options.git || answers.git
+    runInstall: options.runInstall || answers.runInstall
   };
 };
 
 export const cli = async (args) => {
-  let options = parseArgsIntoOptions(args);
-  options = await promptForMissingOptions(options);
-  await createProject(options);
+  const optionsFromArgs = parseArgsIntoOptions(args);
+  const optionsFromPrompts = await promptForMissingOptions(optionsFromArgs);
+  await createProject(optionsFromPrompts);
 };
