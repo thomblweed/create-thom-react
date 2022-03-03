@@ -1,10 +1,9 @@
 {
-  "name": "@thomblweed/create-thom-react",
+  "name": "create-thom-react",
   "version": "1.0.0",
   "description": "cli to create my preferred react project setup",
   "main": "src/main.js",
   "bin": {
-    "@thomblweed/create-thom-react": "bin/create-thom-react",
     "create-thom-react": "bin/create-thom-react"
   },
   "publishConfig": {
