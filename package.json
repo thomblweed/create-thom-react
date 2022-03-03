@@ -10,6 +10,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "bin/",
+    "src/",
+    "templates/"
+  ],
   "keywords": [
     "react",
     "cli",

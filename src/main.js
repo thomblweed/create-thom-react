@@ -26,17 +26,19 @@ const getTemplateDirectory = (templateType) => {
 
 export const createProject = async (options) => {
   const template = options.template.toLocaleLowerCase();
+  if (template !== 'typescript') {
+    console.log(
+      '%s Currently only have a TypeScript template',
+      chalk.magentaBright.bold('SORRY')
+    );
+    return true;
+  }
+
   const projectOptions = {
     ...options,
     targetDirectory: options.targetDirectory || process.cwd(),
     templateDirectory: getTemplateDirectory(template)
   };
-  if (template !== 'typescript') {
-    console.log(
-      '%s Currently only have TypeScript template',
-      chalk.magentaBright.bold('SORRY')
-    );
-  }
 
   try {
     await accessAsync(projectOptions.targetDirectory, fs.constants.R_OK);
@@ -61,6 +63,6 @@ export const createProject = async (options) => {
   ]);
   await tasks.run();
 
-  console.log('%s Project created', chalk.green.bold('DONE'));
+  console.log('%s React project created', chalk.green.bold('DONE'));
   return true;
 };
