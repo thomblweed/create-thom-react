@@ -1,6 +1,6 @@
 {
   "name": "create-thom-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "cli to create my preferred react project setup",
   "main": "src/main.js",
   "bin": {
