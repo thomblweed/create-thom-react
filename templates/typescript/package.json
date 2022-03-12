@@ -9,12 +9,6 @@
     "test": "jest",
     "lint": "eslint --ignore-pattern webpack* --ignore-path .gitignore ."
   },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "moduleNameMapper": {
-      "\\.(scss)$": "<rootDir>/jest/styleMock.ts"
-    }
-  },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
