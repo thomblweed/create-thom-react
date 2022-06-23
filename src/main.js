@@ -9,8 +9,10 @@ import { projectInstall } from 'pkg-install';
 const accessAsync = promisify(fs.access);
 const copyAsync = promisify(ncp);
 
+const typescriptLowercase = 'typescript';
+
 const copyTemplateFilesAsync = async (options) => {
-  return copyAsync(options.templateDirectory, options.targetDirectory, {
+  return await copyAsync(options.templateDirectory, options.targetDirectory, {
     clobber: false
   });
 };
@@ -25,13 +27,13 @@ const getTemplateDirectory = (templateType) => {
 };
 
 export const createProject = async (options) => {
-  const template = options.template.toLocaleLowerCase();
-  if (template !== 'typescript') {
+  let template = options.template.toLocaleLowerCase();
+  if (template !== typescriptLowercase) {
     console.log(
-      '%s Currently only have a TypeScript template',
+      '%s wrong answer, only use TypeScript',
       chalk.magentaBright.bold('SORRY')
     );
-    return true;
+    template = typescriptLowercase;
   }
 
   const projectOptions = {
