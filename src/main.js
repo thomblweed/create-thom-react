@@ -51,11 +51,11 @@ export const createProject = async (options) => {
 
   const tasks = new Listr([
     {
-      title: 'Copy project files',
+      title: 'Copying project files',
       task: () => copyTemplateFilesAsync(projectOptions)
     },
     {
-      title: 'Install dependencies',
+      title: 'Installing dependencies',
       task: () => projectInstall(projectOptions.targetDirectory),
       skip: () =>
         !projectOptions.runInstall
